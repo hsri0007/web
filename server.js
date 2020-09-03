@@ -1,10 +1,11 @@
 const express = require("express");
 const http = require("http");
 const app = express();
-
+const cors = require("cors");
 const sockets = require("socket.io");
 const server = http.createServer(app);
 const io = sockets(server);
+app.use(cors());
 
 io.on("connection", (socket) => {
   socket.on("joined", (roomId, userId) => {
