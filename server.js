@@ -13,11 +13,11 @@ io.on("connection", (socket) => {
     socket.join(roomId);
     socket.to(roomId).broadcast.emit("user-connected", userId);
   });
-  socket.on("sendmessages", (message, id) => {
-    io.to(id).emit("message", message);
+  socket.on("sendmessages", (message, uid) => {
+    io.to(uid).emit("message", message);
   });
 });
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 4000;
 
 server.listen(port);
